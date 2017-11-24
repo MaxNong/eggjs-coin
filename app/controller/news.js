@@ -11,7 +11,9 @@ module.exports = app => {
       const ctx = this.ctx;
       // const page = ctx.query.page || 1;
       const newsList = yield ctx.service.news.find('id');
-      yield ctx.render('news/list.tpl', { list: newsList });
+      // var temp=new String(newsList.user[0])
+      console.log(newsList.user.name)
+      yield ctx.render('news/list.tpl', { list: newsList.user.name });
     }
   }
   return NewsController;

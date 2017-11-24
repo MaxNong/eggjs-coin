@@ -25,8 +25,10 @@ module.exports = app => {
 module.exports = app => {
   class User extends app.Service {
     * find(id) {
-      const user = yield this.ctx.db.query(`select name from user where id = "1"`);
-      return user;
+      const user = yield this.app.mysql.get('user',{'id':3});
+      return {
+        user,
+      };
     }
   }
   return User;
