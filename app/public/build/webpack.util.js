@@ -1,6 +1,3 @@
-/**
- * Created by xuxin on 16/10/11.
- */
 const webpack = require("webpack");
 const ora = require('ora');
 

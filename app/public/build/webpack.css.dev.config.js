@@ -9,8 +9,6 @@ const ENV = 'develop',
   projectRoot = path.resolve(__dirname, '../');
 
 var entry = util.getScssMap(projectRoot + '/css');
-console.log(11111)
-console.log(entry)
 const baseCssConfig = {
   entry: entry,
   output: {
