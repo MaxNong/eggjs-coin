@@ -1,8 +1,13 @@
+const path = require('path');
 exports.keys = 'UserName=BaoQiang'
 exports.view = {
+  root:[
+    path.join(__dirname, '..', 'app/public/dist'),
+  ].join(','),
   defaultViewEngine: 'nunjucks',
   mapping: {
     '.tpl': 'nunjucks',
+    '.html': 'nunjucks',
   },
 };
 exports.news = {
