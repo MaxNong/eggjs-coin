@@ -5,7 +5,8 @@
         </transition>
     </div>
 </template>
-<style lang="sass">
+<style>
+    @import "./assets/scss/common.scss"
 </style>
 <script>
   export default {

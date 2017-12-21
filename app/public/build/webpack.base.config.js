@@ -1,29 +1,9 @@
 'use strict';
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path');
-var aliasConfig = require('./aliasConfig.js')
+let HtmlWebpackPlugin = require('html-webpack-plugin')
+let path = require('path');
+let aliasConfig = require('./aliasConfig.js')
 let util = require('./util')
-//基础变量
-function resolve(dir) {
-  return path.join(__dirname, '..', dir)
-}
-//基础变量
-const ENV = 'develop',
-  projectRoot = path.resolve(__dirname, '../');
 
-//记录需要编译的路径
-const compilePath = {
-  appJs: projectRoot + '/js/',
-  appView: projectRoot + '/view/'
-};
-
-
-/*var entry = util.getAppJsMap(compilePath.appJs);
-var outHtml = util.getViewMap(compilePath.appView);
-var htmlPlugins = util.getWebpackHtml(outHtml)
-console.log(outHtml)
-console.log(htmlPlugins)
-console.log(entry)*/
 module.exports = {
   entry: {index: './index.js'},
   output: {
@@ -34,7 +14,7 @@ module.exports = {
     loaders: [
       {
         test: /\.css$/,
-        loaders: ['style', 'css']
+        loaders: ['style-loader', 'css-loader']
       },
       {
         test: /\.vue$/,
@@ -42,11 +22,15 @@ module.exports = {
       },
       {
         test: /\.scss/,
-        loaders: ["style", "css", "sass"]
+        loaders: ["style-loader", "css-loader", "sass-loader"]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)\w*/,
+        loader: 'url-loader?limit=1000000'
       }
     ]
   },
