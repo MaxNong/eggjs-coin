@@ -1,5 +1,5 @@
 import Router from 'vue-router'
-import routes from './routerViews/wymusic/index'
+import routes from './wymusic/index'
 import Vue from 'vue'
 
 Vue.use(Router)

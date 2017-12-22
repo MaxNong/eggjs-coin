@@ -4,7 +4,7 @@ let defaultRouter = [
     path: '/',
     name: 'home',
     component: resolve => {
-      require(['../../../view/wymusic/index.vue'], resolve)
+      require(['../../view/wymusic/index.vue'], resolve)
     }
   },
   {
