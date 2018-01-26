@@ -1,20 +1,77 @@
 <template>
   <div>
-    还有谁
+    <Table slot="main" height="200" :columns="columns1" :data="data2"></Table>
   </div>
 </template>
-
 <script>
   export default {
-    data() {
-      const item = {
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      };
+    data () {
       return {
-        tableData: Array(20).fill(item)
+        columns1: [
+          {
+            title: 'Name',
+            key: 'name'
+          },
+          {
+            title: 'Age',
+            key: 'age'
+          },
+          {
+            title: 'Address',
+            key: 'address'
+          }
+        ],
+        data2: [
+          {
+            name: 'John Brown',
+            age: 18,
+            address: 'New York No. 1 Lake Park',
+            date: '2016-10-03'
+          },
+          {
+            name: 'Jim Green',
+            age: 24,
+            address: 'London No. 1 Lake Park',
+            date: '2016-10-01'
+          },
+          {
+            name: 'Joe Black',
+            age: 30,
+            address: 'Sydney No. 1 Lake Park',
+            date: '2016-10-02'
+          },
+          {
+            name: 'Jon Snow',
+            age: 26,
+            address: 'Ottawa No. 2 Lake Park',
+            date: '2016-10-04'
+          },
+          {
+            name: 'John Brown',
+            age: 18,
+            address: 'New York No. 1 Lake Park',
+            date: '2016-10-03'
+          },
+          {
+            name: 'Jim Green',
+            age: 24,
+            address: 'London No. 1 Lake Park',
+            date: '2016-10-01'
+          },
+          {
+            name: 'Joe Black',
+            age: 30,
+            address: 'Sydney No. 1 Lake Park',
+            date: '2016-10-02'
+          },
+          {
+            name: 'Jon Snow',
+            age: 26,
+            address: 'Ottawa No. 2 Lake Park',
+            date: '2016-10-04'
+          }
+        ]
       }
     }
-  };
+  }
 </script>
