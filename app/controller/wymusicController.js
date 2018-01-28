@@ -16,7 +16,8 @@ module.exports = app => {
         timeout: 300000,
         data: request.method === 'POST' ? request.body : request.query
       }
-      result = await this.ctx.curl(`${baseUrl}${url}`, opts);
+      result = await this.ctx.curl(`${baseUrl}${url}?symbol=BNBBTC`, opts);
+      console.log(result)
       if (result.status == 200) {
         const headers = ['content-type', 'content-disposition'];
         headers.forEach(function (header) {
