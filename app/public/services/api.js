@@ -1,5 +1,6 @@
 import axios from 'axios'
 import apiConfig from 'apiConfig'
+import qs from 'qs'
 
 /*
 {
@@ -17,7 +18,8 @@ function api (object) {
   }
   console.log(object)
   if (object.type == 'get') {
-    axios[object.type](`${apiConfig[object.name]}?${object.data || ''}`).then(object.resolve || function () {}, object.reject || function () {})
+    let url = object.data ? `${apiConfig[object.name]}?${qs.stringify(object.data)}` : apiConfig[object.name]
+    axios[object.type](url).then(object.resolve || function () {}, object.reject || function () {})
   } else {
     axios[object.type](apiConfig[object.name], object.data || {}).then(object.resolve || function () {}, object.reject || function () {})
   }
