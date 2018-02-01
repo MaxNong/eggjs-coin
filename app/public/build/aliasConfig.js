@@ -9,5 +9,8 @@ function getAbsolutePath(addr) {
 module.exports = {
   'vue': 'vue/dist/vue.js',
   'headerAside': getAbsolutePath('components/common/headerAside.vue'),
+  'apiConfig': getAbsolutePath('constants/config.api.js'),
+  'api': getAbsolutePath('services/api.js'),
+  'binanceApi': getAbsolutePath('util/binanceApi.js'),
 }
 

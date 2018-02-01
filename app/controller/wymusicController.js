@@ -8,7 +8,11 @@ module.exports = app => {
       let url = this.ctx.request.path
       let result = null
       const request = this.ctx.request;
+      console.log(request)
       const opts = {
+        headers: {
+          'X-MBX-APIKEY': 'vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A'
+        },
         method: request.method || 'get',
         timeout: 300000,
         data: request.method === 'POST' ? request.body : request.query

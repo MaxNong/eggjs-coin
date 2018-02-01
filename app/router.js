@@ -5,6 +5,7 @@ module.exports = app => {
   app.get('/news', app.controller.news.list);
   // app.get(/^\/api\/(.*)$/, app.controller.wx.dispatch);
   app.get(/^\/api\/(.*)$/, app.controller.wymusicController.dispatch);
-  app.get(/^\/wymusic\/(.*)$/, app.controller.templateController.dispatch);
+  app.get(/^\/modRouter\/(.*)$/, app.controller.templateController.dispatch);
   app.get('/modRouter', app.controller.templateController.dispatch);
+  app.get('/wymusic', app.controller.templateController.dispatch);
 };
