@@ -1,4 +1,5 @@
 import RemoteMusic from './wymusic'
+import coinPages from './coinPages'
 let defaultRouter = [
   {
     path: '/',
@@ -12,5 +13,5 @@ let defaultRouter = [
     redirect: '/'
   }
 ]
-let routers = Array.prototype.concat(RemoteMusic, defaultRouter)
+let routers = Array.prototype.concat(coinPages, RemoteMusic, defaultRouter)
 export default  routers

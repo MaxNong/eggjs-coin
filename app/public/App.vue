@@ -1,10 +1,8 @@
 <template>
   <div class="main">
-    <headerAside>
-      <transition slot="main" name="translate" mode="out-in">
-        <router-view></router-view>
-      </transition>
-    </headerAside>
+    <transition slot="main" name="translate" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 <style>

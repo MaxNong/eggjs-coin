@@ -1,9 +1,12 @@
 <template>
-  <div>
-    <Table slot="main" height="200" :columns="columns1" :data="data2"></Table>
-  </div>
+  <headerAside>
+    <div>
+      <Table slot="main" height="200" :columns="columns1" :data="data2"></Table>
+    </div>
+  </headerAside>
 </template>
 <script>
+  import headerAside from 'headerAside'
   export default {
     data () {
       return {
@@ -72,6 +75,9 @@
           }
         ]
       }
+    },
+    components: {
+      headerAside
     }
   }
 </script>

@@ -8,7 +8,7 @@ module.exports = {
   entry: {index: './index.js'},
   output: {
     path: path.join(__dirname, '..', './dist'),
-    filename: "wymusic/[name].js"
+    filename: "modRouter/[name].js"
   },
   module: {
     loaders: [
