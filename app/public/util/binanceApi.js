@@ -22,7 +22,7 @@ class BinanceRest {
     let options = {
       type: 'get',
       name: opt.api,
-      data: qs.stringify(Object.assign(opt.queryData, {signature: signhash}))
+      data: Object.assign(opt.queryData, {signature: signhash})
     }
     console.log(options)
     Api(options)

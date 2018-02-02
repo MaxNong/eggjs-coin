@@ -22,23 +22,28 @@
           <Button @click="startLinten" type="primary">开启监听</Button>
           </Col>
         </Row>
-        <Row v-for="m in coins" style="height: 400px;overflow: scroll">
+        <Row v-for='m in coins' style="height: 400px;overflow: scroll">
           <Col>
           <h1>{{m}}</h1>
           </Col>
-          <Col span="4">
+          <Col span="6">
           <Card>
             <p slot="title">买单</p>
-            <p v-if="coinBox[m]" v-for="item in coinBox[m].asks"><span style="color: black">{{item[0]}}</span><span style="color: red;margin-left: 5px">{{item[1]}}</span></p>
+            <p v-for="(item, key) in asks"><span style="width:20px;color: cornflowerblue">{{key}}</span><span style="color: black">{{item[0]}}</span><span style="color: red;margin-left: 5px">{{item[1]}}</span></p>
           </Card>
           </Col>
-          <Col span="4">
+          <Col span="6">
           <Card dis-hover>
             <p slot="title">卖单</p>
-            <p v-for="item in bids"><span style="color: black">{{item[0]}}</span><span style="color: red;margin-left: 5px">{{item[1]}}</span></p>
+            <p v-for="(item, key) in bids"><span style="width:20px;color: cornflowerblue">{{key}}</span><span style="color: black">{{item[0]}}</span><span style="color: red;margin-left: 5px">{{item[1]}}</span></p>
           </Card>
           </Col>
-          <Col span="16">
+          <Col span="12">
+          买一和卖一差价 <span style="color: red;margin-left: 8px">{{distance}}</span><br/>
+          买单量(100单) <span style="color: red;margin-left: 8px">{{asks100}}</span><br/>
+          卖单量(100单) <span style="color: red;margin-left: 8px">{{bids100}}</span><br/>
+          买单量(20单) <span style="color: red;margin-left: 8px">{{asks20}}</span><br/>
+          卖单量(20单) <span style="color: red;margin-left: 8px">{{bids20}}</span><br/>
           </Col>
         </Row>
       </Content>
@@ -64,9 +69,44 @@
       this.sendOrder()
     },
     computed: {
+      // 选择多币种
       coins: function () {
         let selCoin = this.handleCoin == '' ? this.selectVal : this.handleCoin.split(',')
         return selCoin
+      },
+      //买单量100
+      asks100: function () {
+        let arr = []
+        this.asks.forEach(i => {
+          arr.push(i[1])
+        })
+        if (arr.length > 0) return arr.reduce((i, v) => {return parseInt(i) + parseInt(v)})
+      },
+      bids100: function () {
+        let arr = []
+        this.bids.forEach(i => {
+          arr.push(i[1])
+        })
+        if (arr.length > 0) return arr.reduce((i, v) => {return parseInt(i) + parseInt(v)})
+      },
+      asks20: function () {
+        let arr = []
+        this.asks.forEach((i, k) => {
+          if(k <= 19) arr.push(i[1])
+        })
+        if (arr.length > 0) return arr.reduce((i, v) => {return parseInt(i) + parseInt(v)})
+      },
+      bids20: function () {
+        let arr = []
+        this.bids.forEach((i, k) => {
+          if(k <= 19) arr.push(i[1])
+        })
+        if (arr.length > 0) return arr.reduce((i, v) => {return parseInt(i) + parseInt(v)})
+      },
+      distance: function () {
+        if (this.bids[0] && this.asks[0]) {
+          return this.asks[0][0] - this.bids[0][0]
+        }
       }
     },
     methods: {
@@ -94,7 +134,6 @@
               symbol: i
             },
             resolve: function (d) {
-              this.$set(this.coinBox, i, d.data)
               self.asks = d.data.asks
               self.bids = d.data.bids
             }
