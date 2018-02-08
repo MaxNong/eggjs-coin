@@ -8,4 +8,5 @@ module.exports = app => {
   app.get(/^\/modRouter\/(.*)$/, app.controller.templateController.dispatch);
   app.get('/modRouter', app.controller.templateController.dispatch);
   app.get('/wymusic', app.controller.templateController.dispatch);
+  app.get(/^\/huobi\/(.*)$/, app.controller.wymusicController.dispatch);
 };

@@ -1,14 +1,21 @@
 'use strict';
 const crypto = require('crypto')
-const baseUrl = 'https://api.binance.com'
+// const baseUrl = 'https://api.binance.com'
 
 module.exports = app => {
   class wymusicController extends app.Controller {
     async dispatch () {
       let url = this.ctx.request.path
       let result = null
+      let baseUrl = ''
       const request = this.ctx.request;
-      console.log(request)
+      if (url.includes('huobi')) {
+        baseUrl = 'https://api.huobi.pro'
+        url = url.replace(/\/huobi/g, '')
+      } else {
+        baseUrl = 'https://api.binance.com'
+      }
+      console.log(url)
       const opts = {
         headers: {
           'X-MBX-APIKEY': 'vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A'
